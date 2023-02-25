@@ -1,16 +1,23 @@
 var getinput = document.getElementById('search');
 var getul = document.getElementById('members');
 var getli = getul.getElementsByTagName('li');
-var getsortbtn = document.getElementById('sort');
+// var getsortbtn = document.getElementById('sort');
 
-// Sorting Method1
-// li -> text -> insert to array -> sort -> make ul blank -> recrete newli -> insert newli to ul
-getsortbtn.addEventListener('click', getsortazm1);
+var getsortazm1btn = document.getElementById('sortazm1');
+var getsortzam1btn = document.getElementById('sortzam1');
+var getsortazm2btn = document.getElementById('sortazm2');
+var getsortzam2btn = document.getElementById('sortzam2');
 
-function getsortazm1(){
+
+// Sorting AZ Method1
+// create array -> li -> text -> insert to array -> sort -> make ul blank -> create newli -> insert newli to ul
+getsortazm1btn.addEventListener('click', sortazm1);
+getsortzam1btn.addEventListener('click', sortzam1);
+
+function sortazm1(){
     var lis = [];
     for(var i = 0; i < getli.length; i++){
-        // console.log(getli[i].textContent);
+        console.log(getli[i].textContent);
         lis.push(getli[i].textContent);
     }
     // console.log(lis.sort()); 
@@ -30,6 +37,27 @@ function getsortazm1(){
     })
     
     }
+
+function sortzam1(){
+    var lis= [];
+    for(var i = 0; i < getli.length; i++){
+        console.log(getli[i].textContent)
+        lis.push(getli[i].textContent);
+    }
+
+    var zalis = lis.sort().reverse();
+    getul.innerHTML="";
+
+    zalis.forEach(function(zali){
+        var newli = document.createElement('li');
+        var newlink = document.createElement('a');
+        newlink.href= `'javascript:void(0);'`;
+        newlink.appendChild(document.createTextNode(zali));
+        newli.appendChild(newlink);
+        getul.appendChild(newli);
+        console.log(getul);
+    })
+}
     
 // Input Filter
 // keyup -> tolowercase -> getvalue -> striped -> input in style
