@@ -8,16 +8,48 @@ var getsortzam1btn = document.getElementById('sortzam1');
 var getsortazm2btn = document.getElementById('sortazm2');
 var getsortzam2btn = document.getElementById('sortzam2');
 
+// Input Filter
+// keyup -> tolowercase -> getvalue -> striped -> input in style
+getinput.addEventListener('keyup', filter);
 
-// Sorting AZ Method1
+function filter(){
+    var inputfilter = this.value.toLowerCase();
+    // console.log(inputfilter);
+
+    for(var x = 0 ; x < getli.length; x++){
+        // console.log(getli[x].querySelector('a').innerText.toLowerCase());
+        // console.log(getli[x].getElementsByTagName('a')[0].textContent.toLowerCase());
+
+        var getavalue = getli[x].querySelector('a').innerText.toLowerCase();
+
+        if(getavalue.indexOf(inputfilter) > -1){
+            getli[x].style.display = '';
+        }else{
+            getli[x].style.display = 'none';
+        }
+    }
+}
+
+
+
 // create array -> li -> text -> insert to array -> sort -> make ul blank -> create newli -> insert newli to ul
 getsortazm1btn.addEventListener('click', sortazm1);
 getsortzam1btn.addEventListener('click', sortzam1);
+getsortazm2btn.addEventListener('click', sortazm2);
 
+// Method2
+function sortazm2(){
+    console.log('i am working');
+
+    var shouldswitch = true;
+    var switching = true;
+}
+
+// Method1
 function sortazm1(){
     var lis = [];
     for(var i = 0; i < getli.length; i++){
-        console.log(getli[i].textContent);
+        // console.log(getli[i].textContent);
         lis.push(getli[i].textContent);
     }
     // console.log(lis.sort()); 
@@ -59,25 +91,5 @@ function sortzam1(){
     })
 }
     
-// Input Filter
-// keyup -> tolowercase -> getvalue -> striped -> input in style
-getinput.addEventListener('keyup', filter);
 
-function filter(){
-    var inputfilter = this.value.toLowerCase();
-    // console.log(inputfilter);
-
-    for(var x = 0 ; x < getli.length; x++){
-        // console.log(getli[x].querySelector('a').innerText.toLowerCase());
-        // console.log(getli[x].getElementsByTagName('a')[0].textContent.toLowerCase());
-
-        var getavalue = getli[x].querySelector('a').innerText.toLowerCase();
-
-        if(getavalue.indexOf(inputfilter) > -1){
-            getli[x].style.display = '';
-        }else{
-            getli[x].style.display = 'none';
-        }
-    }
-}
 
